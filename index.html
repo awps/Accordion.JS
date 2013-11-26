@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SMK Accordion</title>
+
+	<!-- Accordion styles -->
+	<link rel="stylesheet" href="css/smk-accordion.css" />
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<style type="text/css">
+		/*Demo styles*/
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 'Helvetica', Arial, sans-serif;
+			font-size: 12px;
+		}
+		.container_demo{
+			max-width: 900px;
+			margin: 30px auto 100px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container_demo">
+		
+		<h2>Example 1(second section active)</h2>
+		<!-- Accordion begin -->
+		<div class="accordion_example1">
+		
+			<!-- Section 1 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 1</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+					Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla 
+					tempus, molestie fermentum purus euismod.</p>
+				</div>
+			</div>
+
+			<!-- Section 2 -->
+			<div class="accordion_in  acc_active">
+				<div class="acc_head">Section 2</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+					fugiat nulla pariatur.</p>
+				</div>
+			</div>
+
+			<!-- Section 3 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 3</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- Accordion end -->
+
+		<h2>Example 2(no active section[closeAble])</h2>
+		<!-- Accordion begin -->
+		<div class="accordion_example2">
+		
+			<!-- Section 1 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 1</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+					Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla 
+					tempus, molestie fermentum purus euismod.</p>
+				</div>
+			</div>
+
+			<!-- Section 2 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 2</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+					fugiat nulla pariatur.</p>
+				</div>
+			</div>
+
+			<!-- Section 3 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 3</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- Accordion end -->
+
+		<h2>Example 3(no expand icons)</h2>
+		<!-- Accordion begin -->
+		<div class="accordion_example3">
+		
+			<!-- Section 1 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 1</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+					Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla 
+					tempus, molestie fermentum purus euismod.</p>
+				</div>
+			</div>
+
+			<!-- Section 2 -->
+			<div class="accordion_in  acc_active">
+				<div class="acc_head">Section 2</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+					fugiat nulla pariatur.</p>
+				</div>
+			</div>
+
+			<!-- Section 3 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 3</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- Accordion end -->
+
+		<h2>Example 4(single section[closeAble])</h2>
+		<!-- Accordion begin -->
+		<div class="accordion_example4">
+		
+			<!-- Section 1 -->
+			<div class="accordion_in">
+				<div class="acc_head">Section 1</div>
+				<div class="acc_content">
+					<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+					Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla 
+					tempus, molestie fermentum purus euismod.</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- Accordion end -->
+
+
+	</div>
+
+
+	<script type="text/javascript" src="js/smk-accordion.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			
+			$(".accordion_example1").smk_Accordion({
+				showIcon: true, //boolean
+				animation: true, //boolean
+				closeAble: false, //boolean
+				slideSpeed: 200 //integer, miliseconds
+			});
+
+			$(".accordion_example2").smk_Accordion({
+				showIcon: true, //boolean
+				animation: true, //boolean
+				closeAble: true, //boolean
+				slideSpeed: 200 //integer, miliseconds
+			});
+
+			$(".accordion_example3").smk_Accordion({
+				showIcon: false, //boolean
+				animation: true, //boolean
+				closeAble: false, //boolean
+				slideSpeed: 200 //integer, miliseconds
+			});
+
+			$(".accordion_example4").smk_Accordion({closeAble: true});
+
+			
+		});
+	</script>
+</body>
+</html>
