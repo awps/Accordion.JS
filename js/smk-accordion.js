@@ -1,23 +1,29 @@
-
 /**
- * SMK Accordion jQuery Plugin
+ * SMK Accordion jQuery Plugin v1.1
  * ----------------------------------------------------
  * Author: Smartik
  * Author URL: http://smartik.ws/
- * Copyright: (c) Smartik.
  * License: MIT
  */
 ;(function ( $ ) {
 
 	$.fn.smk_Accordion = function( options ) {
-
+		
+		if (this.length > 1){
+			this.each(function() { 
+				$(this).smk_Accordion(options);
+			});
+			return this;
+		}
+		
 		// Defaults
 		var settings = $.extend({
-			// These are the defaults.
-			animation: true,
-			showIcon: true,
-			closeAble: false,
-			slideSpeed: 200
+			animation:  true,
+			showIcon:   true,
+			closeAble:  false,
+			closeOther: true,
+			slideSpeed: 150,
+			activeIndex: false
 		}, options );
 
 		// Cache current instance
@@ -36,17 +42,42 @@
 
 			//Add Class
 			plugin.addClass('smk_accordion');
-			if( true === settings.showIcon ){
+			if( settings.showIcon ){
 				plugin.addClass('acc_with_icon');
 			}
 
+			//Create sections if they were not created already
+			if( plugin.find('.accordion_in').length < 1 ){
+				plugin.children().addClass('accordion_in');
+			}
+
+			//Add classes to accordion head and content for each section
+			plugin.find('.accordion_in').each(function(index, elem){
+				var childs = $(elem).children();
+				$(childs[0]).addClass('acc_head');
+				$(childs[1]).addClass('acc_content');
+			});
+			
 			//Append icon
-			if( true === settings.showIcon ){
+			if( settings.showIcon ){
 				plugin.find('.acc_head').prepend('<div class="acc_icon_expand"></div>');
 			}
 
+			//Hide inactive
 			plugin.find('.accordion_in .acc_content').not('.acc_active .acc_content').hide();
 
+			//Active index
+			if( settings.activeIndex === parseInt(settings.activeIndex) ){
+				if(settings.activeIndex === 0){
+					plugin.find('.accordion_in').addClass('acc_active').show();
+					plugin.find('.accordion_in .acc_content').addClass('acc_active').show();
+				}
+				else{
+					plugin.find('.accordion_in').eq(settings.activeIndex - 1).addClass('acc_active').show();
+					plugin.find('.accordion_in .acc_content').eq(settings.activeIndex - 1).addClass('acc_active').show();
+				}
+			}
+			
 		}
 
 		// Action when the user click accordion head
@@ -57,12 +88,14 @@
 				var s_parent = $(this).parent();
 				
 				if( s_parent.hasClass('acc_active') == false ){
-					plugin.find('.acc_content').slideUp(settings.slideSpeed);
-					plugin.find('.accordion_in').removeClass('acc_active');
+					if( settings.closeOther ){
+						plugin.find('.acc_content').slideUp(settings.slideSpeed);
+						plugin.find('.accordion_in').removeClass('acc_active');
+					}	
 				}
 
 				if( s_parent.hasClass('acc_active') ){
-					if( false !== settings.closeAble){
+					if( false !== settings.closeAble ){
 						s_parent.children('.acc_content').slideUp(settings.slideSpeed);
 						s_parent.removeClass('acc_active');
 					}
