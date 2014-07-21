@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SMK Accordion</title>
+
+	<!-- Accordion styles -->
+	<link rel="stylesheet" href="css/smk-accordion.css" />
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<style type="text/css">
+		/*Demo styles*/
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 'Helvetica', Arial, sans-serif;
+			font-size: 12px;
+		}
+		.container_demo{
+			max-width: 900px;
+			margin: 30px auto 100px;
+		}
+		h2{
+			margin: 25px 0 20px;
+			text-align: center;
+			color: #555;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container_demo">
+		
+
+<!-- Accordion begin -->
+<ul class="accordion_example">
+
+	<!-- Section 1 -->
+	<li>
+		<div>Section 1. Just text</div><!-- Head -->
+		<div>
+			
+			<p>Quick text. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>
+
+		</div>
+	</li>
+
+	<!-- Section 2 -->
+	<li>
+		<div>Section 2. Just text</div><!-- Head -->
+		<div>
+
+			<p>Quick text. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>
+
+		</div>
+	</li>
+
+	<!-- Section 3 -->
+	<li>
+		<div>Section 3. This has a child.</div><!-- Head -->
+		<div>
+
+			<!-- Another Accordion here -->
+			<ul class="accordion_example">
+				<!-- Section 1 -->
+				<li>
+					<div>Section 1</div><!-- Head -->
+					<div>Quick text</div><!-- Content -->
+				</li>
+
+				<!-- Section 2 -->
+				<li>
+					<div>Section 2</div><!-- Head -->
+					<div>Quick text</div><!-- Content -->
+				</li>
+			</ul>
+			<!-- Another Accordion here end -->
+
+		</div>
+	</li>
+
+</ul>
+<!-- Accordion end -->
+
+
+
+
+	</div>
+
+
+	<script type="text/javascript" src="js/smk-accordion.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$(".accordion_example").smk_Accordion();			
+		});
+	</script>
+</body>
+</html>
