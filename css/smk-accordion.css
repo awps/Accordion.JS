@@ -1,5 +1,8 @@
 .smk_accordion {
   position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   margin-bottom: 20px;
 }
 /**
@@ -68,13 +71,13 @@
 .smk_accordion .accordion_in:last-of-type .acc_content {
   border-radius: 0 0 3px 3px;
 }
-.smk_accordion .accordion_in.acc_active .acc_content {
+.smk_accordion .accordion_in.acc_active > .acc_content {
   display: block;
 }
-.smk_accordion .accordion_in.acc_active .acc_head {
+.smk_accordion .accordion_in.acc_active > .acc_head {
   background: #F9F9F9;
 }
-.smk_accordion .accordion_in.acc_active .acc_head .acc_icon_expand {
+.smk_accordion .accordion_in.acc_active > .acc_head .acc_icon_expand {
   background: url(../images/plusminus.png) center -18px;
 }
 .smk_accordion.acc_with_icon .accordion_in .acc_head,

@@ -1,5 +1,5 @@
 /**
- * SMK Accordion jQuery Plugin v1.1
+ * SMK Accordion jQuery Plugin v1.2
  * ----------------------------------------------------
  * Author: Smartik
  * Author URL: http://smartik.ws/
