@@ -1,8 +1,8 @@
-@container: .smk_accordion;
-@section: .accordion_in;
+@accordion_container: .smk_accordion;
+@accordion_section: .accordion_in;
 
 //Full accordion
-@{container}{
+@{accordion_container}{
 	position: relative;
 	margin: 0;
 	padding: 0;
@@ -15,8 +15,8 @@
  * Section
  * --------------------------------------------------------------
  */
-@{container}{
-	@{section}{ 
+@{accordion_container}{
+	@{accordion_section}{ 
 		border: 1px solid #ccc;
 		position: relative;
 		z-index: 10;
@@ -30,8 +30,8 @@
  * Head
  * --------------------------------------------------------------
  */
-@{container}{
-	@{section}{ 
+@{accordion_container}{
+	@{accordion_section}{ 
 		//Head
 		.acc_head{
 			position: relative;
@@ -60,8 +60,8 @@
  * Content
  * --------------------------------------------------------------
  */
-@{container}{
-	@{section}{ 
+@{accordion_container}{
+	@{accordion_section}{ 
 		//Content
 		.acc_content{
 			background: #F9F9F9;
@@ -81,8 +81,8 @@
  * General
  * --------------------------------------------------------------
  */
-@{container}{
-	@{section}{ 
+@{accordion_container}{
+	@{accordion_section}{ 
 		// Border radius
 		&:first-of-type,
 		&:first-of-type .acc_head{
