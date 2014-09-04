@@ -1,5 +1,5 @@
 /**
- * SMK Accordion jQuery Plugin v1.2
+ * SMK Accordion jQuery Plugin v1.3
  * ----------------------------------------------------
  * Author: Smartik
  * Author URL: http://smartik.ws/
@@ -25,6 +25,13 @@
 			slideSpeed: 150,
 			activeIndex: false
 		}, options );
+
+		if( $(this).data('close-able') )    settings.closeAble = $(this).data('close-able');
+		if( $(this).data('animation') )     settings.animation = $(this).data('animation');
+		if( $(this).data('show-icon') )     settings.showIcon = $(this).data('show-icon');
+		if( $(this).data('close-other') )   settings.closeOther = $(this).data('close-other');
+		if( $(this).data('slide-speed') )   settings.slideSpeed = $(this).data('slide-speed');
+		if( $(this).data('active-index') )  settings.activeIndex = $(this).data('active-index');
 
 		// Cache current instance
 		// To avoid scope issues, use 'plugin' instead of 'this'
