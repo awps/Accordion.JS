@@ -4,7 +4,7 @@ SMK-Accordion
 * **SMK Accordion:** Free jQuery Accordion plugin
 * **Source weight:** ~3kb(css,js,img) - uncompressed
 * **License:** MIT - free for personal or commercial use
-* **Version:** 1.2
+* **Releases:** https://github.com/Smartik89/SMK-Accordion/releases
 * **Plugin info:** For more info and usage instructions: http://goo.gl/MqPoF0
 * **DEMO:** http://goo.gl/jNqSOQ
 
