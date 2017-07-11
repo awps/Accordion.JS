@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SMK Accordion</title>
+
+	<!-- Accordion styles -->
+	<link rel="stylesheet" href="../src/css/smk-accordion.css" />
+
+	<script type="text/javascript" src="../vendor/jquery-3.1.1.min.js"></script>
+
+	<style type="text/css">
+		/*Demo styles*/
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+                         "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+			font-size: 16px;
+			line-height: 1.4;
+		}
+		.container_demo{
+			max-width: 900px;
+			margin: 30px auto 100px;
+		}
+		h2.section-title{
+			margin: 45px 0 30px;
+			color: #BB3658;
+			font-weight: 400;
+		}
+		h2.section-title p{
+			margin: 0;
+			font-size: 16px;
+			color: #555;
+		}
+		code{
+			display: inline-block;
+			padding: 1px 4px;
+			background: #eee;
+			border-radius: 2px;
+			color: #2C82C9;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container_demo">
+		
+		<h2 class="section-title">Default example
+			<p>This is the default example with default settings.</p>
+		</h2>
+
+		<!-- Accordion begin -->
+		<ul class="smk_accordion">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Section 3</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<h2 class="section-title">Second section active
+			<p>The second section is open by default when <code>activeIndex</code> is set to <code>2</code>.</p>
+		</h2>
+
+		<!-- Accordion begin -->
+		<ul class="smk_accordion" data-active-index="2">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Section 3</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<h2 class="section-title">
+			Example 2
+			<p>This example has no active section. When <code>activeIndex</code> is <code>false</code>, <code>closeAble</code> is automatically set to <code>true</code>.</p>
+		</h2>
+
+		<!-- Accordion begin -->
+		<ul class="smk_accordion" data-active-index="false">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Section 3</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<h2 class="section-title">Multiple sections open by default
+			<p><code>activeIndex</code> may be an array of integers. For example if you pass <code>[2, 4]</code>, section 2 and 4 will be open by default.</p>
+		</h2>
+		
+		<!-- Accordion begin -->
+		<ul class="smk_accordion" data-active-index="[2, 4]">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Section 3</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 4 -->
+			<li>
+				<div><h3>Section 4</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<h2 class="section-title">Single section
+			<p>When the accordion contains only one section it will be open by default and <code>closeAble</code> set to <code>true</code></p>
+		</h2>
+		
+		<!-- Accordion begin -->
+		<ul class="smk_accordion">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<h2 class="section-title">Single section, closed
+			<p>To make it closed by default, set <code>activeIndex</code> to <code>false</code></p>
+		</h2>
+		
+		<!-- Accordion begin -->
+		<ul class="smk_accordion" data-active-index="false">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+
+		<h2 class="section-title">Do no close other sections
+			<p>Set <code>closeOther</code> to <code>false</code>, so when a section is opened other section are not closed. This automatically set <code>closeAble</code> to <code>true</code></p>
+		</h2>
+		
+		<!-- Accordion begin -->
+		<ul class="smk_accordion" data-close-other="false">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Section 3</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 4 -->
+			<li>
+				<div><h3>Section 4</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+		<button class="add">Add</button>
+
+		<h2 class="section-title">Example 9( nested accordions)</h2>
+		
+
+		<!-- Accordion begin -->
+		<ul class="smk_accordion">
+		
+			<!-- Section 1 -->
+			<li>
+				<div><h3>Section 1</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 2 -->
+			<li>
+				<div><h3>Section 2</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+			<!-- Section 3 -->
+			<li>
+				<div><h3>Nested accordion</h3></div>
+				<div class="nodemohtml">
+								
+					<!-- Accordion begin -->
+					<ul class="smk_accordion">
+					
+						<!-- Section 1 -->
+						<li>
+							<div><h3>Section 1</h3></div>
+							<div>
+								<!-- Your text here. For this demo, the content is generated automatically. -->
+							</div>
+						</li>
+
+						<!-- Section 2 -->
+						<li>
+							<div><h3>Nested accordions</h3></div>
+							<div class="nodemohtml">
+								
+								<h4>An example</h4>
+
+								<!-- Accordion begin -->
+								<ul class="smk_accordion">
+								
+									<!-- Section 1 -->
+									<li>
+										<div>Section 1</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+									<!-- Section 2 -->
+									<li>
+										<div>Section 2</div>
+									</li>
+
+									<!-- Section 3 -->
+									<li>
+										<div>Section 3</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+									<!-- Section 4 -->
+									<li>
+										<div>Section 4</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+								</ul>
+								<!-- Accordion end -->
+								
+								<h4>Another one</h4>
+			
+								<!-- Accordion begin -->
+								<ul class="smk_accordion">
+								
+									<!-- Section 1 -->
+									<li>
+										<div>Section 1</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+									<!-- Section 2 -->
+									<li>
+										<div>Section 2</div>
+									</li>
+
+									<!-- Section 3 -->
+									<li>
+										<div>Section 3</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+									<!-- Section 4 -->
+									<li>
+										<div>Section 4</div>
+										<div>
+											<!-- Your text here. For this demo, the content is generated automatically. -->
+										</div>
+									</li>
+
+								</ul>
+								<!-- Accordion end -->
+
+							</div>
+						</li>
+
+						<!-- Section 3 -->
+						<li>
+							<div><h3>Section 3</h3></div>
+							<div>
+								<!-- Your text here. For this demo, the content is generated automatically. -->
+							</div>
+						</li>
+
+						<!-- Section 4 -->
+						<li>
+							<div><h3>Section 4</h3></div>
+							<div>
+								<!-- Your text here. For this demo, the content is generated automatically. -->
+							</div>
+						</li>
+
+					</ul>
+					<!-- Accordion end -->
+
+				</div>
+			</li>
+
+			<!-- Section 4 -->
+			<li>
+				<div><h3>Section 4</h3></div>
+				<div>
+					<!-- Your text here. For this demo, the content is generated automatically. -->
+				</div>
+			</li>
+
+		</ul>
+		<!-- Accordion end -->
+
+
+
+
+	</div>
+
+
+	<script type="text/javascript" src="../src/js/smk-accordion.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			// Demo text. Let's save some space to make the code readable. ;)
+			$('.acc_content').not('.nodemohtml').html('<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>');
+
+			$('.add').on( 'click', function(){
+				var cc = $(this).prev();
+				cc.append('<li><div>Yeah</div><div>Test</div></li>');
+				cc.smk_Accordion('refresh');
+			});
+			
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+.smk_accordion {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 20px;
+}
+/*
+-------------------------------------------------------------------------------
+Section
+-------------------------------------------------------------------------------
+*/
+.smk_accordion .acc_section {
+  border: 1px solid #ccc;
+  position: relative;
+  z-index: 10;
+  margin-top: -1px;
+  overflow: hidden;
+}
+/*
+-------------------------------------------------------------------------------
+Head
+-------------------------------------------------------------------------------
+*/
+.smk_accordion .acc_section .acc_head {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  display: block;
+  cursor: pointer;
+}
+.smk_accordion .acc_section .acc_head h3 {
+  line-height: 1;
+  margin: 5px 0;
+}
+/*
+-------------------------------------------------------------------------------
+Content
+-------------------------------------------------------------------------------
+*/
+.smk_accordion .acc_section .acc_content {
+  padding: 10px;
+}
+/*
+-------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------
+*/
+.smk_accordion .acc_section:first-of-type,
+.smk_accordion .acc_section:first-of-type .acc_head {
+  border-radius: 3px 3px 0 0;
+}
+.smk_accordion .acc_section:last-of-type,
+.smk_accordion .acc_section:last-of-type .acc_content {
+  border-radius: 0 0 3px 3px;
+}
+.smk_accordion .acc_section.acc_active > .acc_content {
+  display: block;
+}
+.smk_accordion .acc_section.acc_active > .acc_head {
+  background: #F9F9F9;
+  border-bottom: 1px solid #ccc;
+}
