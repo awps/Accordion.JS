@@ -1,11 +1,7 @@
-SMK-Accordion
+### Accordion.JS
 =============
 
-* **SMK Accordion:** Free jQuery Accordion plugin
-* **Source weight:** ~3kb(css,js,img) - uncompressed
-* **License:** MIT - free for personal or commercial use
-* **Releases:** https://github.com/Smartik89/SMK-Accordion/releases
-* **Plugin info:** For more info and usage instructions: http://goo.gl/MqPoF0
-* **DEMO:** http://goo.gl/jNqSOQ
+A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurable using direct options and HTML5 data-* attributes.
 
-Article about this plugin and usage instructions: http://smartik.ws/2013/11/smk-accordion-free-jquery-plugin/
+#### Demo and docs: https://smartik89.github.io/Accordion.JS/
+#### License: MIT

@@ -1,58 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SMK Accordion</title>
+	<title>Accordion.JS - Free, lightweight jQuery plugin</title>
+	<meta name="description" content="A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurable using direct options and HTML5 data-* attributes.">
+	<!-- Normalize -->
+	<link rel="stylesheet" href="normalize.css" />
+	<link rel="stylesheet" href="demo.css" />
 
 	<!-- Accordion styles -->
-	<link rel="stylesheet" href="../src/css/smk-accordion.css" />
+	<link rel="stylesheet" href="../dist/accordion.css" />
 
-	<script type="text/javascript" src="../vendor/jquery-3.1.1.min.js"></script>
-
-	<style type="text/css">
-		/*Demo styles*/
-		body{
-			margin: 0;
-			padding: 0;
-			font-family: -apple-system, BlinkMacSystemFont,
-                         "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-                         "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-			font-size: 16px;
-			line-height: 1.4;
-		}
-		.container_demo{
-			max-width: 900px;
-			margin: 30px auto 100px;
-		}
-		h2.section-title{
-			margin: 45px 0 30px;
-			color: #BB3658;
-			font-weight: 400;
-		}
-		h2.section-title p{
-			margin: 0;
-			font-size: 16px;
-			color: #555;
-		}
-		code{
-			display: inline-block;
-			padding: 1px 4px;
-			background: #eee;
-			border-radius: 2px;
-			color: #2C82C9;
-		}
-	</style>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container_demo">
-		
-		<h2 class="section-title">Default example
+	<div class="demo-header">
+		<h1>Accordion.JS</h1>
+		<div class="subheading">A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurable using direct options and HTML5 data-* attributes.</div>
+		<div class="demo-call-to-action">
+			<a class="github" href="https://github.com/Smartik89/Accordion.JS">
+				View on Github
+			</a>
+			<a class="download" href="https://github.com/Smartik89/Accordion.JS/archive/master.zip">
+				Download
+			</a>
+		</div>
+	</div>
+
+	<div class="demo-container">
+
+
+		<h2 class="section-title">How to use
+			<p>Step by step install the plugin and create first accordion instance.</p>
+		</h2>
+
+		<p><strong>jQuery:</strong> First of all, this is a jQuery plugin. That means, you must have the jQuery library installed:</p>
+		<pre class="prettyprint"><code>
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">&lt;/script>
+		</code></pre>
+
+		<p><strong>CSS:</strong> Next include the CSS in document <code>&lt;head></code>:</p>
+		<pre class="prettyprint"><code>
+&lt;link rel="stylesheet" href="<mark>dist/accordion.css</mark>" />
+		</code></pre>
+
+		<p><strong>JS:</strong> And the JS just before the closing <code>&lt;/body></code> tag:</p>
+		<pre class="prettyprint"><code>
+&lt;script src="<mark>dist/accordion.js</mark>">&lt;/script>
+		</code></pre>
+
+		<p><strong>Init:</strong> After this line add the following code to create the first instance:</p>
+		<pre class="prettyprint"><code>
+&lt;script>
+    jQuery(document).ready(function($){
+        $(<mark>"#my-accordion"</mark>).accordionjs();
+    });
+&lt;/script>
+		</code></pre>
+
+		<p><strong>HTML:</strong> In this example we used <code>#my-accordion</code> as the ID for our new accordion. That said we must add the HTML:</p>
+		<pre class="prettyprint"><code>
+&lt;ul <mark>id="my-accordion"</mark> class="<mark>accordionjs</mark>">
+
+    &lt;!-- Section 1 -->
+    &lt;li>
+        &lt;div>Section 1 title&lt;/div>
+        &lt;div>
+            &lt;!-- Section content here. -->
+        &lt;/div>
+    &lt;/li>
+
+    &lt;!-- Section 2 -->
+    &lt;li>
+        &lt;div>Section 2 title&lt;/div>
+        &lt;div>
+            &lt;!-- Section content here. -->
+        &lt;/div>
+    &lt;/li>
+
+    &lt;!-- Section 3 -->
+    &lt;li>
+        &lt;div>Section 3 title&lt;/div>
+        &lt;div>
+            &lt;!-- Section content here. -->
+        &lt;/div>
+    &lt;/li>
+
+&lt;/ul>
+		</code></pre>
+
+		<h2 class="section-title">Options
+			<p>The plugin contains a few options that can be defined directly in plugin call or using data-* attributes:</p>
+		</h2>
+		<pre class="prettyprint"><code>
+&lt;script>
+    jQuery(document).ready(function($){
+        $("#my-accordion").accordionjs({
+            closeAble   : false, // Allow self close.<em>(data-close-able)</em>
+            closeOther  : true,  // Close other sections.<em>(data-close-other)</em>
+            slideSpeed  : 150,   // Animation Speed.<em>(data-slide-speed)</em>
+            activeIndex : 1,     // The section open on first init. A number from 1 to X or false.<em>(data-active-index)</em>
+        });
+    });
+&lt;/script>
+		</code></pre>
+
+		<h2 class="section-title">Install with <strong>npm</strong>
+			<p>Using npm? No problems, we support it.</p>
+		</h2>
+		<pre class="prettyprint"><code>
+cd my-project
+npm install accordionjs --save
+		</code></pre>
+
+		<h2 class="section-title">Examples
+			<p>A few examples that demonstrates the plugin's power.</p>
+		</h2>
+
+
+		<h3 class="section-title">Default example
 			<p>This is the default example with default settings.</p>
-		</h2>
+		</h3>
 
 		<!-- Accordion begin -->
-		<ul class="smk_accordion">
-		
+		<ul class="demo-accordion accordionjs">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -80,13 +151,13 @@
 		</ul>
 		<!-- Accordion end -->
 
-		<h2 class="section-title">Second section active
+		<h3 class="section-title">Second section active
 			<p>The second section is open by default when <code>activeIndex</code> is set to <code>2</code>.</p>
-		</h2>
+		</h3>
 
 		<!-- Accordion begin -->
-		<ul class="smk_accordion" data-active-index="2">
-		
+		<ul class="demo-accordion accordionjs" data-active-index="2">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -114,14 +185,14 @@
 		</ul>
 		<!-- Accordion end -->
 
-		<h2 class="section-title">
+		<h3 class="section-title">
 			Example 2
 			<p>This example has no active section. When <code>activeIndex</code> is <code>false</code>, <code>closeAble</code> is automatically set to <code>true</code>.</p>
-		</h2>
+		</h3>
 
 		<!-- Accordion begin -->
-		<ul class="smk_accordion" data-active-index="false">
-		
+		<ul class="demo-accordion accordionjs" data-active-index="false">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -149,13 +220,13 @@
 		</ul>
 		<!-- Accordion end -->
 
-		<h2 class="section-title">Multiple sections open by default
+		<h3 class="section-title">Multiple sections open by default
 			<p><code>activeIndex</code> may be an array of integers. For example if you pass <code>[2, 4]</code>, section 2 and 4 will be open by default.</p>
-		</h2>
-		
+		</h3>
+
 		<!-- Accordion begin -->
-		<ul class="smk_accordion" data-active-index="[2, 4]">
-		
+		<ul class="demo-accordion accordionjs" data-active-index="[2, 4]">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -191,13 +262,13 @@
 		</ul>
 		<!-- Accordion end -->
 
-		<h2 class="section-title">Single section
+		<h3 class="section-title">Single section
 			<p>When the accordion contains only one section it will be open by default and <code>closeAble</code> set to <code>true</code></p>
-		</h2>
-		
+		</h3>
+
 		<!-- Accordion begin -->
-		<ul class="smk_accordion">
-		
+		<ul class="demo-accordion accordionjs">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -209,13 +280,13 @@
 		</ul>
 		<!-- Accordion end -->
 
-		<h2 class="section-title">Single section, closed
+		<h3 class="section-title">Single section, closed
 			<p>To make it closed by default, set <code>activeIndex</code> to <code>false</code></p>
-		</h2>
-		
+		</h3>
+
 		<!-- Accordion begin -->
-		<ul class="smk_accordion" data-active-index="false">
-		
+		<ul class="demo-accordion accordionjs" data-active-index="false">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -228,13 +299,13 @@
 		<!-- Accordion end -->
 
 
-		<h2 class="section-title">Do no close other sections
+		<h3 class="section-title">Do no close other sections
 			<p>Set <code>closeOther</code> to <code>false</code>, so when a section is opened other section are not closed. This automatically set <code>closeAble</code> to <code>true</code></p>
-		</h2>
-		
+		</h3>
+
 		<!-- Accordion begin -->
-		<ul class="smk_accordion" data-close-other="false">
-		
+		<ul class="demo-accordion accordionjs" data-close-other="false">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -272,12 +343,12 @@
 
 		<button class="add">Add</button>
 
-		<h2 class="section-title">Example 9( nested accordions)</h2>
-		
+		<h3 class="section-title">Example 9( nested accordions)</h3>
+
 
 		<!-- Accordion begin -->
-		<ul class="smk_accordion">
-		
+		<ul class="demo-accordion accordionjs">
+
 			<!-- Section 1 -->
 			<li>
 				<div><h3>Section 1</h3></div>
@@ -298,10 +369,10 @@
 			<li>
 				<div><h3>Nested accordion</h3></div>
 				<div class="nodemohtml">
-								
+
 					<!-- Accordion begin -->
-					<ul class="smk_accordion">
-					
+					<ul class="accordionjs">
+
 						<!-- Section 1 -->
 						<li>
 							<div><h3>Section 1</h3></div>
@@ -314,12 +385,12 @@
 						<li>
 							<div><h3>Nested accordions</h3></div>
 							<div class="nodemohtml">
-								
+
 								<h4>An example</h4>
 
 								<!-- Accordion begin -->
-								<ul class="smk_accordion">
-								
+								<ul class="accordionjs">
+
 									<!-- Section 1 -->
 									<li>
 										<div>Section 1</div>
@@ -351,12 +422,12 @@
 
 								</ul>
 								<!-- Accordion end -->
-								
+
 								<h4>Another one</h4>
-			
+
 								<!-- Accordion begin -->
-								<ul class="smk_accordion">
-								
+								<ul class="accordionjs">
+
 									<!-- Section 1 -->
 									<li>
 										<div>Section 1</div>
@@ -430,20 +501,46 @@
 
 	</div>
 
+	<div class="demo-footer">
+		<div class="social-buttons">
+			<!-- Place this tag where you want the button to render. -->
+			<!-- Place this tag where you want the button to render. -->
+			<a class="github-button" href="https://github.com/Smartik89/accordionjs/" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+			<!-- Place this tag where you want the button to render. -->
+			<a class="github-button" href="https://github.com/Smartik89/accordionjs/fork" data-size="large" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork smartik89/accordionjs on GitHub">Fork</a>
 
-	<script type="text/javascript" src="../src/js/smk-accordion.js"></script>
+			<!-- AddToAny BEGIN -->
+			<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+			<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+			<a class="a2a_button_facebook"></a>
+			<a class="a2a_button_twitter"></a>
+			<a class="a2a_button_google_plus"></a>
+			<a class="a2a_button_email"></a>
+			</div>
+			<script async src="https://static.addtoany.com/menu/page.js"></script>
+			<!-- AddToAny END -->
+		</div>
+	</div>
+
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<script type="text/javascript" src="../dist/accordion.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function($){
+			$(".demo-accordion").accordionjs();
+
 			// Demo text. Let's save some space to make the code readable. ;)
 			$('.acc_content').not('.nodemohtml').html('<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>');
 
 			$('.add').on( 'click', function(){
 				var cc = $(this).prev();
 				cc.append('<li><div>Yeah</div><div>Test</div></li>');
-				cc.smk_Accordion('refresh');
+				cc.accordionjs('refresh');
 			});
-			
+
 		});
 	</script>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
