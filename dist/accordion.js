@@ -1,9 +1,9 @@
 /**
  * Plugin Name : Accordion.JS
- * Version     : 2.0
+ * Version     : 2.0.2
  * Author      : ZeroWP Team
  * Author URL  : http://zerowp.com/
- * Plugin URL  : https://smartik89.github.io/Accordion.JS/
+ * Plugin URL  : http://accordionjs.zerowp.com/
  * License     : MIT
  */
 ;(function ( $ ) {
