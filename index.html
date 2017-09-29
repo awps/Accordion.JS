@@ -23,6 +23,7 @@
 			<a class="download" href="https://github.com/Smartik89/Accordion.JS/archive/master.zip">
 				Download
 			</a>
+			<a class="npm" href="https://www.npmjs.com/package/accordionjs" target="_blank">&nbsp;</a>
 		</div>
 	</div>
 
@@ -45,7 +46,7 @@
 
 		<p><strong>JS:</strong> And the JS just before the closing <code>&lt;/body></code> tag:</p>
 		<pre class="prettyprint"><code>
-&lt;script src="<mark>dist/accordion.js</mark>">&lt;/script>
+&lt;script src="<mark>dist/accordion.min.js</mark>">&lt;/script>
 		</code></pre>
 
 		<p><strong>Init:</strong> After this line add the following code to create the first instance:</p>
@@ -57,7 +58,7 @@
 &lt;/script>
 		</code></pre>
 
-		<p><strong>HTML:</strong> In this example we used <code>#my-accordion</code> as the ID for our new accordion. That said we must add the HTML:</p>
+		<p><strong>HTML:</strong> In this example we used <code>#my-accordion</code> as the ID for our new accordion<em>(css class selectors works as well)</em>. That said we must add the HTML:</p>
 		<pre class="prettyprint"><code>
 &lt;ul <mark>id="my-accordion"</mark> class="<mark>accordionjs</mark>">
 
@@ -93,13 +94,24 @@
 		</h2>
 		<pre class="prettyprint"><code>
 &lt;script>
-    jQuery(document).ready(function($){
-        $("#my-accordion").accordionjs({
-            closeAble   : false, // Allow self close.<em>(data-close-able)</em>
-            closeOther  : true,  // Close other sections.<em>(data-close-other)</em>
-            slideSpeed  : 150,   // Animation Speed.<em>(data-slide-speed)</em>
-            activeIndex : 1,     // The section open on first init. A number from 1 to X or false.<em>(data-active-index)</em>
-        });
+    $("#my-accordion").accordionjs({
+        // Allow self close.<em>(data-close-able)</em>
+        closeAble   : false,
+
+        // Close other sections.<em>(data-close-other)</em>
+        closeOther  : true,
+
+        // Animation Speed.<em>(data-slide-speed)</em>
+        slideSpeed  : 150,
+
+        // The section open on first init. A number from 1 to X or false.<em>(data-active-index)</em>
+        activeIndex : 1,
+
+        // Callback when a section is open
+        openSection: function( section ){},
+
+        // Callback before a section is open
+        beforeOpenSection: function( section ){},
     });
 &lt;/script>
 		</code></pre>
@@ -304,7 +316,7 @@ npm install accordionjs --save
 		</h3>
 
 		<!-- Accordion begin -->
-		<ul class="demo-accordion accordionjs" data-close-other="false">
+		<ul class="demo-accordion accordionjs">
 
 			<!-- Section 1 -->
 			<li>
@@ -530,13 +542,6 @@ npm install accordionjs --save
 
 			// Demo text. Let's save some space to make the code readable. ;)
 			$('.acc_content').not('.nodemohtml').html('<p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>');
-
-			$('.add').on( 'click', function(){
-				var cc = $(this).prev();
-				cc.append('<li><div>Yeah</div><div>Test</div></li>');
-				cc.accordionjs('refresh');
-			});
-
 		});
 	</script>
 

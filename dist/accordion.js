@@ -1,6 +1,6 @@
 /**
  * Plugin Name : Accordion.JS
- * Version     : 2.0.2
+ * Version     : 2.1
  * Author      : ZeroWP Team
  * Author URL  : http://zerowp.com/
  * Plugin URL  : http://accordionjs.zerowp.com/
@@ -12,6 +12,7 @@
 
 	$.fn.accordionjs = function( options ) {
 
+		// Select all accordions that match a CSS selector
 		if (this.length > 1){
 			this.each(function() {
 				$(this).accordionjs(options);
@@ -19,208 +20,389 @@
 			return this;
 		}
 
-		// To avoid scope issues, use 'plugin' instead of 'this'
-		// to reference this class from internal events and functions.
-		var plugin = this;
+		// Current accordion instance
+		var accordion = this;
 
-		this.isInteger =  function(value) {
-			return typeof value === 'number' &&
-				isFinite(value) &&
-				Math.floor(value) === value;
+		// Setup utility functions
+		var util = {
+
+			/**
+			 * Is integer
+			 *
+			 * Check if a value is a valid integer number
+			 *
+			 * @param {number} value
+			 * @return {bool}
+			 */
+			isInteger:  function(value) {
+				return typeof value === 'number' &&
+					isFinite(value) &&
+					Math.floor(value) === value;
+			},
+
+			//------------------------------------//--------------------------------------//
+
+			/**
+			 * Is array
+			 *
+			 * Check if a value is a valid array.
+			 *
+			 * @param {Array} arg
+			 * @return {bool}
+			 */
+			isArray: function(arg) {
+				return Object.prototype.toString.call(arg) === '[object Array]';
+			},
+
+			//------------------------------------//--------------------------------------//
+
+			/**
+			 * Is object
+			 *
+			 * Check if a value is a valid object.
+			 *
+			 * @param {Object} arg
+			 * @return {bool}
+			 */
+			isObject: function isObject(arg) {
+				return Object.prototype.toString.call(arg) === '[object Object]';
+			},
+
+			//------------------------------------//--------------------------------------//
+
+			/**
+			 * Sections is open
+			 *
+			 * Check if a section from current accordion is open.
+			 *
+			 * @param {Object}(jQuery) section
+			 * @return {bool}
+			 */
+			sectionIsOpen: function( section ){
+				return section.hasClass( 'acc_active' );
+			},
+
+
+			//------------------------------------//--------------------------------------//
+
+			/**
+			 * Get hash
+			 *
+			 * Get hash substring without # or false if the window does not have one.
+			 *
+			 * @return {string|bool(false)}
+			 */
+			getHash: function(){
+				if(window.location.hash) {
+					return window.location.hash.substring(1);
+				}
+
+				return false;
+			},
 		};
 
-		this.isArray = function(arg) {
-			return Object.prototype.toString.call(arg) === '[object Array]';
-		};
-
-		this.isObject = function isObject(arg) {
-			return Object.prototype.toString.call(arg) === '[object Object]';
-		};
-
-		// Defaults
+		/* Setup options
+		---------------------*/
 		var settings = $.extend({
-			closeAble   : false, // Allow self close.
-			closeOther  : true,  // Close other sections.
-			slideSpeed  : 150,   // Animation Speed.
-			activeIndex : 1,     // The section open on first init.
+			// Allow self close.
+			closeAble   : false,
+
+			// Close other sections.
+			closeOther  : true,
+
+			// Animation Speed.
+			slideSpeed  : 150,
+
+			// The section open on first init. A number from 1 to X or false.
+			activeIndex : 1,
+
+			// Callback when a section is open
+			openSection: false, // function( section ){}
+
+			// Callback before a section is open
+			beforeOpenSection: false, // function( section ){}
 		}, options );
 
-		// Assign to plugin options data-* attributes if they exists
+		// Assign to accordion options data-* attributes if they exists
 		$.each(settings, function( option ) {
 			var data_attr = option.replace(/([A-Z])/g, '-$1').toLowerCase().toString(), //`optionsName` becomes `option-name`
-			new_val       =  plugin.data( data_attr );
+			new_val       =  accordion.data( data_attr );
 
 			if( new_val || false === new_val ){
 				settings[ option ] = new_val;
 			}
 		});
 
+		/*
+		If the activeIndex is false then all sections are closed by default.
+		If the closeOther is false then other section will not be closed when
+		this is opened. That means, in both cases, sections should be able
+		to be closed independently.
+		*/
 		if( settings.activeIndex === false || settings.closeOther === false ){
 			settings.closeAble = true;
 		}
 
-		// "Constructor"
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * "Constructor"
+		 *
+		 * @return void
+		 */
 		var init = function() {
+			accordion.create();
+			accordion.openOnClick();
 
-			if( options === 'refresh' ){
-				plugin.unbind();
-				plugin.destroy();
-			}
+			$(window).on( 'load', function(){
+				accordion.openOnHash();
+			});
 
-			plugin.createStructure();
-			plugin.clickHead();
-		};
-
-		// Toggle a single section by index
-		this.toggleSection = function(mode, section, speed){
-			var this_section;
-
-			if( section instanceof jQuery || plugin.isArray( section ) ){
-				this_section = section;
-			}
-			else if( plugin.isInteger( section ) ){
-				this_section = plugin.children().eq(section - 1);
-			}
-
-			$.each(this_section, function(index, sect) {
-				var acc_content;
-
-				if( plugin.isInteger( sect ) ){
-					acc_content = $( plugin.children().eq(sect - 1) ).children().eq(1);
-				}
-				else{
-					acc_content = $(sect).children().eq(1);
-				}
-
-				speed = ( speed >= 0 ) ? speed : settings.slideSpeed;
-
-				if( speed > 0 ){
-					if( 'open' === mode ){
-						acc_content.slideDown( speed );
-					}
-					else {
-						acc_content.slideUp( speed );
-					}
-				}
-				else{
-					if( 'open' === mode ) {
-						acc_content.show( speed );
-					}
-					else {
-						acc_content.hide( speed );
-					}
-				}
-
-				if( 'open' === mode ) {
-					$(sect).addClass('acc_active');
-				}
-				else {
-					$(sect).removeClass('acc_active');
-				}
+			$(window).on( 'hashchange', function(){
+				accordion.openOnHash();
 			});
 		};
 
-		// Open a single section by index
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * Open section
+		 *
+		 * Open a single section.
+		 *
+		 * @param {Object}(jQuery) section The section to open
+		 * @param {number} speed
+		 * @return void
+		 */
 		this.openSection = function(section, speed){
-			plugin.toggleSection( 'open', section, speed );
+			// Event before a section is opened
+			$(document).trigger('accjs_before_open_section', [
+				section,
+			]);
+
+			// Callback before a section is opened
+			if( typeof settings.beforeOpenSection === "function" ){
+				settings.beforeOpenSection.call(this, section);
+			}
+
+			// Setup the collapse speed
+			speed = ( speed >= 0 ) ? speed : settings.slideSpeed;
+
+			// Get the section content
+			var section_content = section.children().eq(1); // .acc_content
+
+			// Open the section
+			section_content.slideDown( speed, function(){
+				// Event when a section is opened
+				$(document).trigger('accjs_open_section', [
+					section,
+				]);
+
+				// Callback when a section is opened
+				if( typeof settings.openSection === "function" ){
+					settings.openSection.call(this, section);
+				}
+			} );
+
+			// Make active
+			section.addClass('acc_active');
 		};
 
-		// Close a single section by index
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * Close section
+		 *
+		 * Close a single section.
+		 *
+		 * @param {Object}(jQuery) section The section to close
+		 * @param {number} speed
+		 * @return void
+		 */
 		this.closeSection = function(section, speed){
-			plugin.toggleSection( 'close', section, speed );
+			// Event before a section is closed
+			$(document).trigger('accjs_before_close_section', [
+				section,
+			]);
+
+			// Callback before a section is closed
+			if( typeof settings.beforeCloseSection === "function" ){
+				settings.beforeCloseSection.call(this, section);
+			}
+
+			// Setup the collapse speed
+			speed = ( speed >= 0 ) ? speed : settings.slideSpeed;
+
+			// Get the section content
+			var section_content = section.children().eq(1); // .acc_content
+
+			// Open the section
+			section_content.slideUp( speed, function(){
+				// Event when a section is closed
+				$(document).trigger('accjs_close_section', [
+					section,
+				]);
+
+				// Callback when a section is closed
+				if( typeof settings.closeSection === "function" ){
+					settings.closeSection.call(this, section);
+				}
+
+			} );
+
+			// Make inactive
+			section.removeClass('acc_active');
+
 		};
 
-		// Close all sections
-		this.closeAllSections = function(current_accortdion_sections, speed){
-			plugin.closeSection( current_accortdion_sections, speed );
-		};
+		//------------------------------------//--------------------------------------//
 
-		this.destroy = function(){
-
-			//Add classes to accordion head and content for each section
-			$.each( plugin.children(), function(index, elem){
-				var _t = $(elem),
-				childs = _t.children();
-
-				//Create sections if they were not created already
-				_t.removeClass('acc_section');
-
-				//Add the necesary css clases
-				$(childs[0]).removeClass('acc_head');
-				$(childs[1]).removeClass('acc_content');
+		/**
+		 * Close other sections except this one
+		 *
+		 * @param {Object}(jQuery) section The section to exclude
+		 * @param {number} speed
+		 * @return void
+		 */
+		this.closeOtherSections = function(section, speed){
+			var this_acc = section.closest('.accordionjs').children();
+			$(this_acc).each(function() {
+				accordion.closeSection( $(this).not(section), speed );
 			});
-
-			//Hide inactive
-			plugin.children('.acc_section').not('.acc_active').children('.acc_content').show();
-
 		};
 
-		// Add .accordionjs class
-		this.createStructure = function() {
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * Create the accordion
+		 *
+		 * Create the accordion structure. Add the necessary CSS classes and other stuff.
+		 *
+		 * @return void
+		 */
+		this.create = function() {
 
 			//Add Main CSS Class
-			plugin.addClass('accordionjs');
+			accordion.addClass('accordionjs');
+
+			// Get all current accordion sections
+			var accordion_sections = accordion.children();
 
 			//Add classes to accordion head and content for each section
-			$.each( plugin.children(), function(index, elem){
-				var _t = $(elem),
-				childs = _t.children();
-
-				//Create sections if they were not created already
-				_t.addClass('acc_section');
-
-				//Make sure the section content exists. If not, then append an empty div.
-				if( childs.length < 2 ){
-					_t.append('<div class="acc_content"></div>');
-				}
-
-				//Add the necesary css clases
-				$(childs[0]).addClass('acc_head');
-				$(childs[1]).addClass('acc_content');
+			$.each( accordion_sections, function(index, elem){
+				accordion.createSingleSection( $(elem) );
 			});
 
-			//Hide inactive
-			plugin.children('.acc_section').not('.acc_active').children('.acc_content').hide();
-
-			//Active index
-			if( plugin.isArray( settings.activeIndex ) ){
-				plugin.openSection( settings.activeIndex, 0 );
+			// //Active index
+			if( util.isArray( settings.activeIndex ) ){
+				var indexes = settings.activeIndex;
+				for (var i = 0; i < indexes.length; i++) {
+					accordion.openSection( accordion_sections.eq( indexes[i] - 1 ), 0 );
+				}
 			}
-			else if(settings.activeIndex > 1){
-				plugin.openSection( settings.activeIndex, 0 );
+			else if( settings.activeIndex > 1 ){
+				accordion.openSection( accordion_sections.eq( settings.activeIndex - 1 ), 0 );
 			}
 			else if( false !== settings.activeIndex ){
-				plugin.openSection( 1, 0 );
+				accordion.openSection( accordion_sections.eq( 0 ), 0 );
 			}
 
 		};
 
-		// Action when the user click accordion head
-		this.clickHead = function() {
+		//------------------------------------//--------------------------------------//
 
-			plugin.on('click', '.acc_head', function(){
+		/**
+		 * Create a single section
+		 *
+		 * Create the structure of a single section by adding the necessary CSS classes.
+		 *
+		 * @param {string} section The section to create. jQuery object.
+		 * @return void
+		 */
+		this.createSingleSection = function( section ) {
+			var childs = section.children();
 
-				var s_parent = $(this).parent();
+			// Create sections if they were not created already
+			section.addClass('acc_section');
 
-				// Close other sections when this section is opened
-				if( s_parent.hasClass('acc_active') === false && settings.closeOther ){
-					plugin.closeSection( plugin.children() );
-				}
+			// Add the necessary CSS classes
+			$(childs[0]).addClass('acc_head');
+			$(childs[1]).addClass('acc_content');
 
-				// Allow to close itself
-				if( s_parent.hasClass('acc_active') ){
-					if( false !== settings.closeAble || plugin.children().length === 1 ){
-						plugin.closeSection( s_parent );
+			// Collapse section content.
+			// Only if it does not have `.acc_active` CSS class set by default.
+			if( ! section.hasClass('acc_active') ) {
+				section.children('.acc_content').hide();
+			}
+		};
+
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * Open on click
+		 *
+		 * Open a section when its header get a click.
+		 *
+		 * @return void
+		 */
+		this.openOnClick = function() {
+
+			accordion.on('click', '.acc_head', function( event ){
+				event.stopImmediatePropagation();
+
+				var section = $(this).closest('.acc_section');
+				if( util.sectionIsOpen( section ) ) {
+
+					// If closeAble, then close this section but do not touch other.
+					if( settings.closeAble ) {
+						accordion.closeSection( section );
 					}
+
+					// If the accordion contains only one section, act like a toggle.
+					else if( accordion.children().length === 1 ) {
+						accordion.closeSection( section );
+					}
+
 				}
 
-				// Default behavior
-				else{
-					plugin.openSection( s_parent );
+				// Section is closed
+				else {
+					// If closeOther, then close other sections when this is opened.
+					if( settings.closeOther ) {
+						accordion.closeOtherSections( section );
+						accordion.openSection( section );
+					}
+
+					// Else open only this section and do not touch other sections.
+					else {
+						accordion.openSection( section );
+					}
 				}
 
 			});
 
+		};
+
+		//------------------------------------//--------------------------------------//
+
+		/**
+		 * Open a section if a hash is present in URL and scroll to it.
+		 *
+		 * @return void
+		 */
+		this.openOnHash = function() {
+			if( util.getHash() ) {
+				var section = $( '#' + util.getHash() );
+				if( section.hasClass('acc_section') ) {
+					accordion.openSection( section );
+					if( settings.closeOther ) {
+						accordion.closeOtherSections( section );
+					}
+					$("html, body").animate({
+						scrollTop: parseInt( section.offset().top ) - 50,
+					}, 150);
+				}
+			}
 		};
 
 		//"Constructor" init

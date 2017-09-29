@@ -3,6 +3,7 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	margin-top: 10px;
 	margin-bottom: 20px;
 
 	// Section
@@ -31,7 +32,6 @@
 		// Content
 		// ---------------
 		.acc_content{
-			// background: #F9F9F9;
 			padding: 10px;
 		}
 
@@ -40,11 +40,13 @@
 		// Border radius
 		&:first-of-type,
 		&:first-of-type .acc_head{
-			border-radius: 3px 3px 0 0;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
 		}
 		&:last-of-type,
 		&:last-of-type .acc_content{
-			border-radius: 0 0 3px 3px;
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
 		}
 
 		//JS Requirements
