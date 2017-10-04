@@ -1,0 +1,63 @@
+.accordionjs{
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+
+	// Section
+	// ---------------
+	.acc_section{
+		border: 1px solid #ccc;
+		position: relative;
+		z-index: 10;
+		margin-top: -1px;
+		overflow: hidden;
+
+		// Head
+		// ------------
+		.acc_head{
+			position: relative;
+			background: #fff;
+			padding: 10px;
+			display: block;
+			cursor: pointer;
+			h3{
+				line-height: 1;
+				margin: 5px 0;
+			}
+		}
+
+		// Content
+		// ---------------
+		.acc_content{
+			padding: 10px;
+		}
+
+		// General rules
+		// ---------------------
+		// Border radius
+		&:first-of-type,
+		&:first-of-type .acc_head{
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+		}
+		&:last-of-type,
+		&:last-of-type .acc_content{
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
+		}
+
+		//JS Requirements
+		&.acc_active{
+			> .acc_content{
+				display: block;
+			}
+			> .acc_head{
+				background: #F9F9F9;
+				border-bottom: 1px solid #ccc;
+			}
+		}
+	}
+}
