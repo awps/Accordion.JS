@@ -1,60 +1,15 @@
 {
-	// Environments
-	// --------------------
-	// This option defines globals exposed by modern browsers:
-	// all the way from good old document and navigator to the HTML5 FileReader and other new
-	// developments in the browser world.
-	// http://jshint.com/docs/options/#browser
 	"browser": true,
-
-	// This option defines globals exposed by the jQuery JavaScript library.
-	// http://jshint.com/docs/options/#jquery
 	"jquery": true,
-
-	// Enforcing options
-	// -------------------------
-	// This option prohibits the use of bitwise operators such as ^ (XOR), | (OR) and others.
-	// Bitwise operators are very rare in JavaScript programs and quite often & is simply a mistyped &&.
-	// http://jshint.com/docs/options/#bitwise
 	"bitwise": true,
-
-	// To enable syntax first defined in the ECMAScript 5.1 specification.
-	// http://jshint.com/docs/options/#esversion
 	"esversion": 5,
-
-	// This option requires you to always put curly braces around blocks in loops and conditionals.
-	// http://jshint.com/docs/options/#curly
 	"curly": true,
-
-	// This options prohibits the use of == and != in favor of === and !==.
-	// http://jshint.com/docs/options/#eqeqeq
 	"eqeqeq": true,
-
-	// This option requires all for in loops to filter object's items.
-	// http://jshint.com/docs/options/#forin
 	"forin": true,
-
-	// This options prohibits overwriting prototypes of native objects such as Array, Date and so on.
-	// http://jshint.com/docs/options/#freeze
 	"freeze": true,
-
-	// http://jshint.com/docs/options/#maxdepth
 	"maxdepth": 5,
-
-	// This option requires the code to run in ECMAScript 5's strict mode.
-	// http://jshint.com/docs/options/#strict
 	"strict": true,
-
-	// This option warns when a comma is not placed after the last element in an array or object literal.
-	// http://jshint.com/docs/options/#trailingcomma
 	"trailingcomma": true,
-
-	// This option prohibits the use of explicitly undeclared variables.
-	// This option is very useful for spotting leaking and mistyped variables.
-	// http://jshint.com/docs/options/#undef
 	"undef": true,
-
-	// This option warns when you define and never use your variables.
-	// http://jshint.com/docs/options/#unused
 	"unused": true
 }

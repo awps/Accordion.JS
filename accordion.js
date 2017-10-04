@@ -1,6 +1,6 @@
 /**
  * Plugin Name : Accordion.JS
- * Version     : 2.1.0
+ * Version     : 2.1.1
  * Author      : ZeroWP Team
  * Author URL  : http://zerowp.com/
  * Plugin URL  : http://accordionjs.zerowp.com/

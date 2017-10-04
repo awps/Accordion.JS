@@ -4,13 +4,11 @@
 	<title>Accordion.JS - Free, lightweight jQuery plugin</title>
 	<meta name="description" content="A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurable using direct options and HTML5 data-* attributes.">
 	<!-- Normalize -->
-	<link rel="stylesheet" href="normalize.css" />
-	<link rel="stylesheet" href="demo.css" />
+	<link rel="stylesheet" href="assets/normalize.css" />
+	<link rel="stylesheet" href="assets/demo.css" />
 
 	<!-- Accordion styles -->
-	<link rel="stylesheet" href="dist/accordion.css" />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="assets/accordion.css" />
 </head>
 <body>
 	<div class="demo-header">
@@ -23,30 +21,50 @@
 			<a class="download" href="https://github.com/Smartik89/Accordion.JS/archive/master.zip">
 				Download
 			</a>
-			<a class="npm" href="https://www.npmjs.com/package/accordionjs" target="_blank">&nbsp;</a>
 		</div>
 	</div>
 
 	<div class="demo-container">
 
-
-		<h2 class="section-title">How to use
-			<p>Step by step install the plugin and create first accordion instance.</p>
+		<h2 class="section-title">Installation
+			<p>Step by step install the plugin.</p>
 		</h2>
 
-		<p><strong>jQuery:</strong> First of all, this is a jQuery plugin. That means, you must have the jQuery library installed:</p>
+		<h3>Install with <strong>npm</strong></h3>
+		<pre><code>
+npm install accordionjs --save
+		</code></pre>
+
+		<p>or</p>
+
+		<h3>Install with <strong>yarn</strong></h3>
+		<pre><code>
+yarn add accordionjs
+		</code></pre>
+
+		<p>or</p>
+
+		<h3>Manual install</h3>
+		<p>Download the most recent version from Github and include the unzipped files in your project. Use the top link on this page.</p>
+
+
+		<h2 class="section-title">Getting started
+			<p>Step by step create the first accordion instance.</p>
+		</h2>
+
+		<p><strong>jQuery:</strong> Make sure that jQuery library is installed. If it is not that add the following line: </p>
 		<pre class="prettyprint"><code>
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">&lt;/script>
 		</code></pre>
 
 		<p><strong>CSS:</strong> Next include the CSS in document <code>&lt;head></code>:</p>
 		<pre class="prettyprint"><code>
-&lt;link rel="stylesheet" href="<mark>dist/accordion.css</mark>" />
+&lt;link rel="stylesheet" href="<mark>accordion.css</mark>" />
 		</code></pre>
 
 		<p><strong>JS:</strong> And the JS just before the closing <code>&lt;/body></code> tag:</p>
 		<pre class="prettyprint"><code>
-&lt;script src="<mark>dist/accordion.min.js</mark>">&lt;/script>
+&lt;script src="<mark>accordion.min.js</mark>">&lt;/script>
 		</code></pre>
 
 		<p><strong>Init:</strong> After this line add the following code to create the first instance:</p>
@@ -114,14 +132,6 @@
         beforeOpenSection: function( section ){},
     });
 &lt;/script>
-		</code></pre>
-
-		<h2 class="section-title">Install with <strong>npm</strong>
-			<p>Using npm? No problems, we support it.</p>
-		</h2>
-		<pre class="prettyprint"><code>
-cd my-project
-npm install accordionjs --save
 		</code></pre>
 
 		<h2 class="section-title">Examples
@@ -532,8 +542,9 @@ npm install accordionjs --save
 		</div>
 	</div>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-	<script type="text/javascript" src="dist/accordion.js"></script>
+	<script type="text/javascript" src="assets/accordion.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function($){
 			$(".demo-accordion").accordionjs();
