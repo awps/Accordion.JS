@@ -6,7 +6,7 @@ A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurab
 #### Demo and docs: http://accordionjs.zerowp.com/
 #### License: MIT
 
-[![NPM](https://nodei.co/npm/accordionjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/accordionjs/)
+[![NPM](https://nodei.co/npm/accordionjs.png?compact=true)](https://nodei.co/npm/accordionjs/)
 
 ### Changelog:
 
