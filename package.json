@@ -1,6 +1,6 @@
 {
   "name": "accordionjs",
-  "version": "0.0.1",
+  "version": "2.1.2",
   "description": "A free, lightweight jQuery Accordion plugin. It is only ~1KB gzipped. Configurable using direct options and HTML5 data-* attributes.",
   "main": "accordion.js",
   "directories": {
