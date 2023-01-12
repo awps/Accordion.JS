@@ -206,6 +206,9 @@
 
 			// Make active
 			section.addClass('acc_active');
+
+			// Set aria-expanded on section header
+			section.children().eq(0).attr('aria-expanded', true);
 		};
 
 		//------------------------------------//--------------------------------------//
@@ -252,6 +255,9 @@
 
 			// Make inactive
 			section.removeClass('acc_active');
+
+			// Set aria-expanded on section header
+			section.children().eq(0).attr('aria-expanded', false);
 
 		};
 
@@ -325,9 +331,11 @@
 			// Create sections if they were not created already
 			section.addClass('acc_section');
 
-			// Add the necessary CSS classes
+			// Add the necessary CSS classes and attributes
 			$(childs[0]).addClass('acc_head');
+			$(childs[0]).attr('role', 'button');
 			$(childs[1]).addClass('acc_content');
+			$(childs[1]).attr('role', 'region');
 
 			// Collapse section content.
 			// Only if it does not have `.acc_active` CSS class set by default.
